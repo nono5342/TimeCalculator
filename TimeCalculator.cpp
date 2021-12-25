@@ -12,7 +12,6 @@ void main()
 	switch (op)
 	{
 	case '+':
-	{
 		cout << "How many times to add?\n";
 		cin >> n;
 
@@ -40,9 +39,7 @@ void main()
 		}
 		cout << "Sum: " << hrs << ": " << min << ": " << sec << "\n";
 		break;
-	}
 	case '-':
-	{
 		cout << "How many times to subtract?\n";
 		cin >> n;
 
@@ -77,7 +74,6 @@ void main()
 		}
 		cout << "Difference: " << hrs << ": " << min << ": " << sec << "\n";
 		break;
-	}
 	default:
 		cout << "Please enter + or - and try again!";
 	}
