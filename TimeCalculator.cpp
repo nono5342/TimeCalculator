@@ -6,24 +6,79 @@ void main()
 	int min = 0;
 	int sec = 0;
 	int inp, n;
-	cout << "How many times to add?";
-	cin >> n;
-	for (int i = 1; i <= n; i++)
+	char op; 
+	cout << "Operation? ( + | - )\n";
+	cin >> op;
+	switch (op)
 	{
-		cout << "Time #" << i << endl;
-		cout << "Hours?" << endl;
-		cin >> inp;
-		hrs = hrs + inp;
-		cout << "Minutes?" << endl;
-		cin >> inp;
-		min = min + inp;
-		cout << "Seconds?" << endl;
-		cin >> inp;
-		sec = sec + inp;
+	case '+':
+	{
+		cout << "How many times to add?\n";
+		cin >> n;
 
-		hrs = hrs + min / 60 + (sec / 60) / 60;
-		min = min % 60 + sec / 60;
-		sec = sec % 60;
+		for (int i = 1; i <= n; i++)
+			/*
+			put every input in a temp variable
+			add it to assigned place (hrs, min, sec) initialized at 0
+			loop to cumulate
+			*/
+		{
+			cout << "Time #" << i << "\n";
+			cout << "Hours? \n";
+			cin >> inp;
+			hrs = hrs + inp;
+			cout << "Minutes?\n";
+			cin >> inp;
+			min = min + inp;
+			cout << "Seconds?\n";
+			cin >> inp;
+			sec = sec + inp;
+
+			hrs = hrs + min / 60 + (sec / 60) / 60;
+			min = min % 60 + sec / 60;
+			sec = sec % 60;
+		}
+		cout << "Sum: " << hrs << ": " << min << ": " << sec << "\n";
+		break;
 	}
-	cout << "Sum: " << hrs << ": " << min << ": " << sec;
+	case '-':
+	{
+		cout << "How many times to subtract?\n";
+		cin >> n;
+
+		//first entry outside loop to keep things positive
+
+		cout << "Time #1\n";
+		cout << "Hours?\n";
+		cin >> hrs;
+		cout << "Minutes?\n";
+		cin >> min;
+		cout << "Seconds?\n";
+		cin >> sec;
+
+		//rest is normal and boring
+
+		for (int i = 2; i <= n; i++)
+		{
+			cout << "Time #" << i << "\n";
+			cout << "Hours?\n";
+			cin >> inp;
+			hrs = hrs - inp;
+			cout << "Minutes?\n";
+			cin >> inp;
+			min = min - inp;
+			cout << "Seconds?\n";
+			cin >> inp;
+			sec = sec - inp;
+
+			hrs = hrs + min / 60 + (sec / 60) / 60;
+			min = min % 60 + sec / 60;
+			sec = sec % 60;
+		}
+		cout << "Difference: " << hrs << ": " << min << ": " << sec << "\n";
+		break;
+	}
+	default:
+		cout << "Please enter + or - and try again!";
+	}
 }
